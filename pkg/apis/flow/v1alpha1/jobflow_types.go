@@ -42,8 +42,9 @@ type Flow struct {
 }
 
 type DependsOn struct {
-	Targets []string `json:"targets,omitempty"`
-	Probe   *Probe   `json:"probe,omitempty"`
+	Targets  []string          `json:"targets,omitempty"`
+	Probe    *Probe            `json:"probe,omitempty"`
+	Strategy DependsOnStrategy `json:"strategy,omitempty"`
 }
 
 type Probe struct {
@@ -109,6 +110,13 @@ type Phase string
 const (
 	Retain = "retain"
 	Delete = "delete"
+)
+
+type DependsOnStrategy string
+
+const (
+	Any DependsOnStrategy = "any"
+	All DependsOnStrategy = "all"
 )
 
 const (
